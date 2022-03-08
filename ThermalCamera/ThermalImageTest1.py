@@ -13,15 +13,20 @@ mlx = adafruit_mlx90640.MLX90640(i2c) # begin MLX90640 with I2C comm
 mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_8_HZ # set refresh rate
 mlx_shape = (24,32)
 
-# setup the figure for plotting
+# setup the figure for plotting(not needed to just send data
 plt.ion() # enables interactive plotting
 fig,ax = plt.subplots(figsize=(12,7))
 therm1 = ax.imshow(np.zeros(mlx_shape),vmin=0,vmax=60) #start plot with zeros
 cbar = fig.colorbar(therm1) # setup colorbar for temps
 cbar.set_label('Temperature [$^{\circ}$C]',fontsize=14) # colorbar label
 
+
 frame = np.zeros((24*32,)) # setup array for storing all 768 temperatures
+
+#t_array will store the time taken to generate the new frame (from line 33 to 40) each 
+#of the time values in a different value of the array
 t_array = []
+
 while True:
     t1 = time.monotonic()
     try:
@@ -33,7 +38,12 @@ while True:
         plt.pause(0.001) # required
         fig.savefig('mlx90640_test_fliplr.png',dpi=300,facecolor='#FCFCFC',
                     bbox_inches='tight') # comment out to speed up
+
+        
         t_array.append(time.monotonic()-t1)
+
+        #calulate the length of the array that stores the timestamp taken to generate each frame
+        # over the time passed so far until the calculation time 
         print('Sample Rate: {0:2.1f}fps'.format(len(t_array)/np.sum(t_array)))
     except ValueError:
         continue # if error, just read again
