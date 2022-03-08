@@ -1,4 +1,4 @@
-
+ 
 #include <Servo.h>
 
 Servo ESC;     // create servo object to control the ESC
@@ -18,7 +18,7 @@ void loop() {
 
  potValue = map(potValue, 0, 1023, 0, 180);   // scale it to use it with the servo library (value between 0 and 180)
 
-  //For continuous servo it rotates right if 180 degrees and left if 0 degrees.
+  //For continuous servo it rotates right if 0. 180 degrees and left if 0 degrees.
   ESC.write(potValue);    // Send the signal to the ESC
 
 
