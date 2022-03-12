@@ -23,7 +23,7 @@ while True:
         continue # if error, just read again
 
 #calculate the size in bytes of the data array for one frame 
-packet_length = len(mlx.getFrame(frame))
+packet_length = len(frame)
 
 # print out the average temperature from the MLX90640
 #print('Average MLX90640 Temperature: {0:2.1f}C ({1:2.1f}F)'.\
