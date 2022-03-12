@@ -26,7 +26,7 @@ while True:
 packet_length = len(mlx.getFrame(frame))
 
 # print out the average temperature from the MLX90640
-print('Average MLX90640 Temperature: {0:2.1f}C ({1:2.1f}F)'.\
-      format(np.mean(frame),(((9.0/5.0)*np.mean(frame))+32.0)))
+#print('Average MLX90640 Temperature: {0:2.1f}C ({1:2.1f}F)'.\
+#      format(np.mean(frame),(((9.0/5.0)*np.mean(frame))+32.0)))
 print(frame)
 print (f'Length of the 24x36 datastring in bytes is: {packet_length}.')
