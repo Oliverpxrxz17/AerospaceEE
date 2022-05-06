@@ -35,8 +35,8 @@ frame2 = [int(i) for i in frame]
 
 print(frame2)
 print (f'Length of the 24x36 datastring in bytes is: {packet_length}.')
-print('pereeeez bytes', sys.getsizeof(frame), 'bits=', 8*sys.getsizeof(frame))
+print('Byte size: ', sys.getsizeof(frame), 'bits size: ', 8*sys.getsizeof(frame))
 
-print('pereeeez bytes', sys.getsizeof(frame2), 'bits=', 8*sys.getsizeof(frame2))
+print('byte size: ', sys.getsizeof(frame2), 'bit size: ', 8*sys.getsizeof(frame2))
 
 
